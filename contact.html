@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book a Cut — Kezda the Barber · Katy, TX</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{--black:#060810;--ink:#0c0e1a;--charcoal:#111525;--blue:#2139ad;--blue-lt:#2f4fd4;--blue-glow:rgba(33,57,173,.35);--gold:#d4a843;--gold-lt:#f0c060;--white:#f2f2f6;--chrome:#c8cce8;--chrome-lt:#e8eaf8;--chrome-dk:#8890b8;--gray:#5a6080;--gray-lt:#9298b8;}
+    html{scroll-behavior:smooth}
+    body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+    a{text-decoration:none;transition:all .2s}
+    body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")}
+    .ticker-wrap{background:var(--blue);overflow:hidden;white-space:nowrap;padding:.38rem 0;position:relative;z-index:10}
+    .ticker-track{display:inline-block;animation:ticker 28s linear infinite}
+    .ticker-track span{font-family:'Oswald',sans-serif;font-weight:600;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin:0 2.5rem}
+    .ticker-track span::before{content:'✦  '}
+    @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    header{position:sticky;top:0;z-index:100;background:rgba(6,8,16,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(33,57,173,.25)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;max-width:1200px;margin:0 auto}
+    .logo-wrap{display:flex;align-items:baseline;gap:.3rem}
+    .logo-k{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:.04em;line-height:1;filter:drop-shadow(0 0 8px rgba(212,168,67,.5))}
+    .logo-rest{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--chrome-lt);letter-spacing:.04em;line-height:1}
+    .logo-tag{font-family:'Oswald',sans-serif;font-size:.55rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--gray);margin-left:.5rem;align-self:center}
+    nav ul{display:flex;list-style:none;gap:.2rem;align-items:center}
+    nav ul a{font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--chrome-dk);padding:.4rem .85rem;border-radius:3px;transition:color .2s}
+    nav ul a:hover,nav ul a.active{color:var(--gold)}
+    .nav-book{background:var(--blue)!important;color:#fff!important;font-weight:700!important;border-radius:3px!important}
+    .nav-book:hover{background:var(--blue-lt)!important}
+    .menu-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:.4rem}
+    .menu-toggle span{display:block;width:22px;height:2px;background:var(--chrome);border-radius:2px}
+    .page-hero{position:relative;background:linear-gradient(108deg,#060810 0%,#0c0e1a 60%,#0f1230 100%);padding:5rem 2rem 4rem;text-align:center;z-index:1;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 60%,rgba(33,57,173,.1) 0%,transparent 65%)}
+    .breadcrumb{font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(242,242,242,.3);margin-bottom:1rem;position:relative;z-index:1}
+    .breadcrumb a{color:var(--blue-lt)}
+    .page-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,10vw,7rem);color:var(--chrome-lt);margin-bottom:.4rem;position:relative;z-index:1;letter-spacing:.03em}
+    .page-hero h1 span{color:var(--gold)}
+    .page-hero p{font-size:.97rem;color:var(--gray-lt);max-width:420px;margin:0 auto;position:relative;z-index:1}
+    .contact-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:3.5rem;max-width:1100px;margin:0 auto;padding:4rem 2rem 5rem;position:relative;z-index:1}
+    .section-eyebrow{font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--blue-lt);margin-bottom:.5rem;display:flex;align-items:center;gap:.75rem}
+    .section-eyebrow::after{content:'';flex:0 0 22px;height:1px;background:var(--blue-lt)}
+    .info-col h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4vw,3rem);color:var(--chrome-lt);letter-spacing:.03em;margin-bottom:.6rem}
+    .info-col>p{color:var(--gray-lt);font-size:.92rem;line-height:1.7;margin-bottom:2rem}
+    .info-card{background:rgba(33,57,173,.05);border:1px solid rgba(33,57,173,.18);border-radius:8px;padding:1.2rem 1.5rem;margin-bottom:.8rem;display:flex;gap:1rem;align-items:flex-start;transition:all .28s;border-left:2px solid rgba(33,57,173,.4)}
+    .info-card:hover{background:rgba(33,57,173,.1);border-left-color:var(--blue-lt)}
+    .card-icon{width:42px;height:42px;background:rgba(33,57,173,.15);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+    .card-body h4{font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--chrome-lt);margin-bottom:.12rem}
+    .card-body a,.card-body p{font-size:.86rem;color:var(--gray-lt);display:block;margin:0}
+    .card-body a{color:var(--blue-lt);font-weight:600}
+    .card-body a:hover{color:var(--gold)}
+    .slots-label{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem;display:block}
+    .slots-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem}
+    .slot{border:1.5px solid rgba(33,57,173,.2);border-radius:5px;padding:.6rem .5rem;text-align:center;cursor:pointer;transition:all .2s;font-family:'Oswald',sans-serif}
+    .slot:hover{border-color:var(--blue-lt);background:rgba(33,57,173,.08)}
+    .slot.selected{border-color:var(--blue-lt);background:var(--blue);color:#fff}
+    .slot .slot-day{display:block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:.1rem}
+    .slot.selected .slot-day{color:rgba(255,255,255,.7)}
+    .slot .slot-time{display:block;font-size:.75rem;font-weight:600;color:var(--chrome-lt)}
+    .slot.selected .slot-time{color:#fff}
+    .shop-photo{border-radius:8px;overflow:hidden;position:relative;background:var(--charcoal);border:1px dashed rgba(33,57,173,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:180px;margin-top:1.5rem;gap:.45rem}
+    .sp-icon{font-size:2rem;opacity:.18}
+    .sp-text{font-family:'Oswald',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.18);text-align:center;padding:0 1.5rem}
+    .form-wrap{background:rgba(33,57,173,.04);border:1px solid rgba(33,57,173,.2);border-radius:12px;padding:2.5rem;border-top:3px solid var(--blue)}
+    .form-wrap h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--chrome-lt);letter-spacing:.03em;margin-bottom:.2rem}
+    .form-wrap .sub{font-size:.84rem;color:var(--gray);margin-bottom:2rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem}
+    .form-group{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.9rem}
+    .form-group label{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray)}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:.75rem 1rem;border:1.5px solid rgba(33,57,173,.2);border-radius:5px;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--white);background:rgba(33,57,173,.04);transition:border-color .2s,box-shadow .2s;outline:none}
+    .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(242,242,242,.2)}
+    .form-group select option{background:var(--ink);color:var(--white)}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue-lt);box-shadow:0 0 0 3px rgba(33,57,173,.15)}
+    .form-group textarea{resize:vertical;min-height:90px}
+    .submit-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:5px;padding:1rem;font-family:'Oswald',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;transition:all .25s;margin-top:.5rem;box-shadow:0 0 20px rgba(33,57,173,.25)}
+    .submit-btn:hover{background:var(--blue-lt);box-shadow:0 0 30px var(--blue-glow);transform:translateY(-2px)}
+    .form-note{font-size:.73rem;color:var(--gray);text-align:center;margin-top:.75rem}
+    .success-msg{display:none;background:rgba(33,57,173,.08);border:1.5px solid var(--blue-lt);border-radius:8px;padding:2rem;text-align:center;margin-top:1rem}
+    .success-msg h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--blue-lt);letter-spacing:.03em;margin-bottom:.4rem}
+    .success-msg p{font-size:.86rem;color:var(--gray-lt)}
+    footer{background:var(--charcoal);border-top:1px solid rgba(33,57,173,.15);padding:2.5rem 2rem;position:relative;z-index:1}
+    .footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;align-items:center}
+    .footer-logo-k{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);letter-spacing:.04em}
+    .footer-logo-rest{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--chrome-lt);letter-spacing:.04em}
+    .footer-logo p{font-size:.78rem;color:var(--gray);margin-top:.2rem}
+    .footer-links{display:flex;flex-direction:column;gap:.4rem}
+    .footer-links a{font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);transition:color .2s}
+    .footer-links a:hover{color:var(--gold)}
+    .footer-right{text-align:right}
+    .footer-right a{font-size:.9rem;color:var(--blue-lt);font-weight:600}
+    .footer-right a:hover{color:var(--gold)}
+    .footer-right p{font-size:.78rem;color:var(--gray);margin-top:.25rem}
+    .footer-copy{font-size:.7rem;color:rgba(90,96,128,.45);margin-top:.35rem}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:768px){
+      .menu-toggle{display:flex}nav{display:none;width:100%}
+      nav.open{display:block;position:absolute;top:100%;left:0;right:0;background:var(--ink);border-top:1px solid rgba(33,57,173,.2);padding:1rem}
+      nav.open ul{flex-direction:column}nav.open ul a{display:block;padding:.65rem 1rem}
+      .header-inner{position:relative;flex-wrap:wrap}
+      .contact-layout{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+      .form-row{grid-template-columns:1fr}
+      .slots-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-inner{grid-template-columns:1fr;text-align:center}
+      .footer-right{text-align:center}
+    }
+  </style>
+</head>
+<body>
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Book Now</span><span>Walk-Ins Welcome</span><span>Katy TX</span><span>@kezdabarber</span><span>Fades</span><span>Line Ups</span><span>Beards</span><span>Book Now</span><span>Walk-Ins Welcome</span><span>Katy TX</span><span>@kezdabarber</span><span>Fades</span><span>Line Ups</span><span>Beards</span>
+  </div>
+</div>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo-wrap">
+      <span class="logo-k">K</span><span class="logo-rest">EZDA</span>
+      <span class="logo-tag">The Barber · Katy, TX</span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="contact.html" class="nav-book">Book Now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<section class="page-hero">
+  <p class="breadcrumb"><a href="index.html">Home</a> / Book a Cut</p>
+  <h1>Book Your <span>Cut</span></h1>
+  <p>Walk-ins welcome. Appointments get priority. 5618 Armillary Dr, Katy TX 77449.</p>
+</section>
+<div class="contact-layout">
+  <div class="info-col reveal">
+    <p class="section-eyebrow">Get In Touch</p>
+    <h2>Let's Get You Right</h2>
+    <p>Slide in the DMs, or fill out the form. We'll confirm your slot and have you looking clean.</p>
+    <div class="info-card">
+      <div class="card-icon">📍</div>
+      <div class="card-body"><h4>Location</h4><p>5618 Armillary Dr</p><p>Katy, TX 77449</p></div>
+    </div>
+    <div class="info-card">
+      <div class="card-icon">📸</div>
+      <div class="card-body"><h4>Instagram DMs</h4><a href="https://www.instagram.com/kezdabarber" target="_blank" rel="noopener">@kezdabarber</a><p>Fastest way to reach us</p></div>
+    </div>
+    <div class="info-card">
+      <div class="card-icon">🕐</div>
+      <div class="card-body"><h4>Hours</h4><p>By appointment + Walk-ins welcome</p><p>Contact for current availability</p></div>
+    </div>
+    <div class="info-card">
+      <div class="card-icon">💈</div>
+      <div class="card-body"><h4>Walk-Ins</h4><p>Walk-ins always welcome</p><p>Appointments get priority booking</p></div>
+    </div>
+    <div class="shop-photo">
+      <span class="sp-icon">✂️</span>
+      <span class="sp-text">Add shop or workspace photo here</span>
+    </div>
+  </div>
+  <div class="reveal" style="transition-delay:.15s">
+    <div class="form-wrap">
+      <h3>Request a Booking</h3>
+      <p class="sub">Fill it out and we'll confirm your slot — usually within a few hours.</p>
+      <form id="bookingForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group"><label>First Name *</label><input type="text" placeholder="Your name" required/></div>
+          <div class="form-group"><label>Phone / IG Handle *</label><input type="text" placeholder="(832) 000-0000 or @handle" required/></div>
+        </div>
+        <div class="form-group">
+          <label>Service *</label>
+          <select required>
+            <option value="" disabled selected>Choose a service</option>
+            <option>Fade</option>
+            <option>Fade + Line Up</option>
+            <option>Taper</option>
+            <option>Taper + Line Up</option>
+            <option>Beard Work</option>
+            <option>Fade + Beard</option>
+            <option>Kids Cut</option>
+            <option>Hair Design</option>
+            <option>Not Sure — Consult Me</option>
+          </select>
+        </div>
+        <span class="slots-label">Preferred Availability</span>
+        <div class="slots-grid" id="slotsGrid">
+          <div class="slot" onclick="selectSlot(this)"><span class="slot-day">Weekday</span><span class="slot-time">Morning</span></div>
+          <div class="slot" onclick="selectSlot(this)"><span class="slot-day">Weekday</span><span class="slot-time">Afternoon</span></div>
+          <div class="slot" onclick="selectSlot(this)"><span class="slot-day">Weekday</span><span class="slot-time">Evening</span></div>
+          <div class="slot" onclick="selectSlot(this)"><span class="slot-day">Weekend</span><span class="slot-time">Morning</span></div>
+          <div class="slot" onclick="selectSlot(this)"><span class="slot-day">Weekend</span><span class="slot-time">Afternoon</span></div>
+          <div class="slot selected" onclick="selectSlot(this)"><span class="slot-day">Any</span><span class="slot-time">Flexible</span></div>
+        </div>
+        <div class="form-group"><label>Anything Else?</label><textarea placeholder="Reference photo, specific style, or anything helpful..."></textarea></div>
+        <button type="submit" class="submit-btn">Send Booking Request</button>
+        <p class="form-note">We'll confirm via IG DM or text. Walk-ins always welcome too.</p>
+      </form>
+      <div class="success-msg" id="successMsg">
+        <h3>Request Sent ✓</h3>
+        <p>We'll hit you back to confirm. Follow <a href="https://www.instagram.com/kezdabarber" target="_blank" rel="noopener">@kezdabarber</a> for updates and availability.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div><span class="footer-logo-k">K</span><span class="footer-logo-rest">EZDA</span></div>
+      <p>The Barber · Katy, TX 77449</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="contact.html">Book Now</a>
+    </div>
+    <div class="footer-right">
+      <a href="https://www.instagram.com/kezdabarber" target="_blank" rel="noopener">@kezdabarber</a>
+      <p>5618 Armillary Dr, Katy TX 77449</p>
+      <p class="footer-copy">&copy; 2026 Kezda The Barber · All Rights Reserved</p>
+    </div>
+  </div>
+</footer>
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mainNav');
+  toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  function selectSlot(el) {
+    document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} });
+  }, {threshold:.1});
+  reveals.forEach(r => obs.observe(r));
+</script>
+</body>
+</html>
